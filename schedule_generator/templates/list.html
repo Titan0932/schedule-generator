@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySchedules</title>
+    <link rel='stylesheet' href="static/css/style.css">
+</head>
+<body>
+
+    <h1 style="margin-top: 1rem ;"> Schedule List</h1>
+<div style="display: flex; justify-content: center;align-items: center; flex-direction: column;">
+    {% block list-content-1 %}
+    <p>
+        
+{% if form1 and form2 %}
+
+{% load index %}
+
+{% for i in range %}
+
+<table class='list-details'>
+    <tr>
+        <th>Tuition days:</th>
+        
+            {% if form1|index:0|index:'sun' %}
+              <td>  Sunday
+            {% endif %}
+
+            {% if form1|index:i|index:'mon' %}
+             Monday  
+            {% endif %}
+
+            {% if form1|index:i|index:'tues' %}
+                   Tuesday      
+            {% endif %}
+
+            {% if form1|index:i|index:'wed' %}
+                  Wednesday         
+            {% endif %}
+
+            {% if form1|index:i|index:'thu' %}
+                  Thursday          
+            {% endif %}
+
+            {% if form1|index:i|index:'fri' %}
+                  Friday        
+            {% endif %}
+
+            {% if form1|index:i|index:'sat' %}
+                  Saturday </td>
+            {% endif %}
+            </tr>    
+       
+        <tr> <th> <b>  ID: </b> </th> <td> {{ form1|index:i|index:'id'}} </td> </tr> 
+
+            <tr>  <th>  <b>  Number of subiects: </b></th>  <td> {{ form1|index:i|index:'numofSubs' }}  </td> </tr>
+            
+                <tr> <th>   <b>  School Starts at: </b> </th> <td> {{ form1|index:i|index:'startTime' }} </td> </tr>
+            
+                    <tr>  <th>   <b>  School Ends at: </b> </th> <td> {{ form1|index:i|index:'endTime' }} </td> </tr>
+            
+                        <tr> <th>  <b>Subjects: </b> </th> <td> <span class='subjects'> {{form2|index:i|index:'subjects'}}   </span>  </td></tr>
+                   <tr><td colspan='2' rowspan='2'>   <a href='delete/{{ form1|index:i|index:"id"}}/' class="delete">Delete</a> </td></tr>  
+            </table> 
+          
+            
+            
+       {% endfor %}  
+ 
+       {% else %}
+        <h1> No Schedules created yet!!!</h1>
+        {% endif %}
+    
+    </p>
+
+    {% endblock %}
+</div>
+</body>
+</html>
+

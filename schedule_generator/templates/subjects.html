@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block form-content-1 %}
+<form method="POST" style="padding: 1rem 1rem;" >
+    {% csrf_token %}
+    <h2> Enter your Subjects below</h2>
+{{form.as_p}}
+<input type='submit' value='Submit' id='submit-info'>
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block form-content-1 %}
+<ul>
+    <form method="POST" style="padding: 1rem 1rem;" action='next/'>
+        {% csrf_token %}
+        {% if msg %}
+        <h3 style="color:red; padding: 0.8rem;">{{msg}}</h3>
+        {% endif %}
+        <p> Which days to study?</p>
+   {{form.as_p}}
+  
+                <input type='submit' value='Next' id='submit-info'>
+
+            </form>
+    <br>
+{% endblock %}
